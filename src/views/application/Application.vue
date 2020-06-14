@@ -110,11 +110,9 @@
             },
             isOutdatedIE() {
                 const ua = window.navigator.userAgent;
-                if (ua.indexOf('MSIE ') > 0 || ua.indexOf('Trident/') > 0) {
-                    return true;
-                }
+                return ua.indexOf('MSIE ') > 0 || ua.indexOf('Trident/') > 0;
 
-                return false;
+
             }
         },
         components: {
@@ -127,6 +125,13 @@
 </script>
 
 <style lang="scss">
+
+    .p-breadcrumb {
+        border: 0!important;
+        border-bottom: 1px solid #eaeaea!important;
+        border-radius: 0!important;
+    }
+
     @import '../../assets/styles/app/app.scss';
 </style>
 

@@ -5,7 +5,16 @@ import store from './store'
 import VueCookies from 'vue-cookies'
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
+import Breadcrumb  from 'primevue/breadcrumb';
+import Panel from 'primevue/panel';
+import PanelMenu from 'primevue/panelmenu';
+import ScrollPanel from 'primevue/scrollpanel';
 import Toast from 'primevue/toast';
+import Menubar from 'primevue/menubar';
+import DataView from 'primevue/dataview';
+import DataTable  from 'primevue/datatable';
+import Column  from 'primevue/column';
+
 import ToastService from 'primevue/toastservice';
 import VueWindowSize from 'vue-window-size';
 import { i18n } from '@/i18n';
@@ -17,26 +26,24 @@ Vue.use(VueWindowSize);
 
 Vue.component('InputText', InputText);
 Vue.component('Button', Button);
+Vue.component('PanelMenu', PanelMenu);
+Vue.component('Panel', Panel);
+Vue.component('Breadcrumb', Breadcrumb);
+Vue.component('ScrollPanel', ScrollPanel);
 Vue.component('Toast', Toast);
+Vue.component('Menubar', Menubar);
+Vue.component('DataView', DataView);
+Vue.component('DataTable', DataTable);
+Vue.component('Column', Column);
 
-import 'primevue/resources/themes/nova/theme.css';
+import 'primeflex/primeflex.css';
+import 'primevue/resources/themes/saga-cyan/theme.css';
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
-
-
-// import { languages } from '@/i18n'
-// import { defaultLocale } from '@/i18n'
-// const messages = Object.assign(languages)
 
 Vue.config.productionTip = false
 
 Vue.$cookies.config('7d')
-
-// const i18n = new VueI18n({
-//   locale: defaultLocale,
-//   fallbackLocale: 'en',
-//   messages
-// });
 
 
 new Vue({
