@@ -25,8 +25,10 @@
 </template>
 
 <script>
-    import SocialLogin from '@/components/SocialLogin'
+    import SocialLogin from "@/components/login/SocialLogin";
+
     export default {
+
         name: "Login",
         components: {
             SocialLogin
@@ -35,5 +37,5 @@
 </script>
 
 <style scoped>
-
+    @import '../../assets/styles/login.css';
 </style>

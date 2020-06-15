@@ -9,6 +9,8 @@
 </template>
 
 <script>
+    import {i18n} from "@/i18n";
+
     export default {
         name: "AppMenu",
         props: {
@@ -21,6 +23,7 @@
                     {
                         label: 'Ana Sayfa',
                         icon:'pi pi-fw pi-home',
+                        class: 'active-item',
                         command: () => {
                             this.goToRoute('/');
                         }
@@ -29,7 +32,7 @@
                         label: 'Sureler',
                         icon:'pi pi-fw pi-list',
                         command: () => {
-                            this.goToRoute('/chapter');
+                            this.goToRoute('/'+i18n.locale+'/chapter');
                         }
                     },
                     {
@@ -94,7 +97,7 @@
                     this.$router.push({ path: path })
             },
             toggleSubmenu(event, name) {
-                this.activeSubmenus[name] = this.activeSubmenus[name] ? false: true;
+                this.activeSubmenus[name] = !this.activeSubmenus[name];
                 this.activeSubmenus = {...this.activeSubmenus};
                 event.preventDefault();
             },
@@ -116,5 +119,8 @@
         border-radius: 0!important;
         font-weight: 500!important;
         border-bottom: 1px solid #e0e0e0 !important;
+    }
+    .active-item{
+        background-color: #2196F3!important;
     }
 </style>

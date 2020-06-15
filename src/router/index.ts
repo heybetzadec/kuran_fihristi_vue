@@ -1,15 +1,27 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
+import ErrorApplication from '../views/application/ErrorApplication.vue'
 import Application from '../views/application/Application.vue'
 import MainApp from '../components/application/MainApp.vue'
 import Chapter from '../components/application/Chapter.vue'
 import Verse from '../components/application/Verse.vue'
+import {i18n} from '../i18n'
+// import appOptions from '../config/app_options'
+
+
+import Home from '../views/login/Home.vue'
+import Login from '../views/login/Login.vue'
+import SignUp from '../views/login/SignUp.vue'
 
 Vue.use(VueRouter)
 
   const routes: Array<RouteConfig> = [
     {
       path: '/',
+      redirect: `index/${i18n.locale}`
+    },
+    {
+      path: 'index/:lang',
       name: 'Application',
       component: Application,
       redirect: {
@@ -35,7 +47,7 @@ Vue.use(VueRouter)
           },
         },
         {
-          path: '/chapter',
+          path: 'chapter',
           name: 'Chapter',
           component: Chapter,
           meta: {
@@ -70,8 +82,33 @@ Vue.use(VueRouter)
             ]
           },
         },
+        {
+          path: 'error',
+          name: 'ErrorApplication',
+          component: ErrorApplication
+        }
       ]
     },
+
+    // {
+    //   path: '/',
+    //   redirect: '/login'
+    // },
+    // {
+    //   path: '/home',
+    //   name: 'Home',
+    //   component: Home
+    // },
+    // {
+    //   path: '/login',
+    //   name: 'Login',
+    //   component: Login
+    // },
+    // {
+    //   path: '/signup',
+    //   name: 'SignUp',
+    //   component: SignUp
+    // },
 ]
 
 
@@ -82,6 +119,19 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+
+  let language = to.params.lang;
+  if (!language) {
+    language = 'en';
+  }
+
+  if (language in i18n.messages){
+    i18n.locale = language
+  } else {
+    next({ path: i18n.locale+'/error' });
+  }
+
+
 
   const nearestWithTitle = to.matched.slice().reverse().find(r => r.meta && r.meta.title);
 
